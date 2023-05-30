@@ -30,7 +30,7 @@ module.exports = merge(common, {
     ]
   },
   output: {
-    filename: 'js/' + name + '.min.js',
+    filename: 'js/' + name + '.[contenthash].min.js',
     path: path.resolve(__dirname, './public'),
     clean: true
   },

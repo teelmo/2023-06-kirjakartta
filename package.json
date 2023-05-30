@@ -14,7 +14,7 @@
     "push": "git push && git push yle main",
     "start": "webpack serve --open --config webpack.dev.js",
     "sync-gh-pages": "git subtree push --prefix public origin gh-pages",
-    "sync-prod": "npm run build && dataviz-deploy generate --dir public && dataviz-deploy sync lusi 2023-06-kirjakartta --folder public && date > sync-prod.txt",
+    "sync-prod": "NODE_ENV=yle npm run build && dataviz-deploy generate --dir public && dataviz-deploy sync lusi 2023-06-kirjakartta --folder public && date > sync-prod.txt",
     "sync-test": "npm run build && dataviz-deploy generate --dir public && dataviz-deploy sync lusi-test 2023-06-kirjakartta --folder public",
     "sync-share-config": "cd assets/resources && aws s3 sync . s3://lusi-dataviz-prod/share_configs --exclude='*' --include='2023-06-kirjakartta.json' --profile lusi-aws-yle"
   },
