@@ -30,7 +30,7 @@ function Map({ data }) {
   const hideData = () => {
     appRef.current.querySelector('.map_info').style.visibility = 'hidden';
     appRef.current.querySelector('.map_info').style.opacity = 0;
-    document.querySelector('#app_search_municipality').value = '';
+    document.querySelector('#app_search_place').value = '';
   };
 
   const updateMap = useCallback(() => {
@@ -40,8 +40,13 @@ function Map({ data }) {
   const showData = useCallback((event, d) => {
     appRef.current.querySelector('.map_info').style.visibility = 'visible';
     appRef.current.querySelector('.map_info').style.opacity = 1;
-    setCurrentAreaData(d);
-  }, []);
+    if (d === false) {
+      const place_name = document.querySelector(`#app_places option[value='${event.target.value}']`)?.dataset.value;
+      setCurrentAreaData(data.filter(place => place.place === place_name)[0]);
+    } else {
+      setCurrentAreaData(d);
+    }
+  }, [data]);
 
   const drawMarkers = useCallback((projection, svg) => {
     // Show area info
@@ -126,9 +131,15 @@ function Map({ data }) {
       <h4>Valitse paikka</h4>
       <div className="map_wrapper map_municipality" ref={appRef}>
         <div className="input_container">
-          <label htmlFor="app_search_municipality">
-            <input list="app_municipalities" id="app_search_municipality" name="" placeholder="Valitse" onChange={(event) => showData(event, false)} />
+          <label htmlFor="app_search_place">
+            <input list="app_places" id="app_search_place" name="" placeholder="Valitse paikka" onChange={(event) => showData(event, false)} />
           </label>
+          <datalist id="app_places">
+            {data && data.map(place => (
+            // eslint-disable-next-line jsx-a11y/control-has-associated-label
+              <option key={place.place} data-value={place.place} value={place.place}>{place.place}</option>
+            ))}
+          </datalist>
         </div>
         <IsVisible once>
           {(isVisible) => (
