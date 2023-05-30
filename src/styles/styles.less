@@ -1,0 +1,119 @@
+#app-root-2023-06-kirjakartta *, ::before, ::after {
+  box-sizing: content-box;
+}
+
+@import 'yddrasil_overrides.less';
+
+#app-root-2023-06-kirjakartta .app {
+  box-sizing: border-box;
+  font-family: Open Sans, sans-serif;
+  margin: auto auto;
+  max-width: 688px;
+  padding-top: 20px;
+  position: relative;
+  text-align: center;
+  .map_wrapper {
+    padding-bottom: 40px;
+    position: relative;
+    .map_container {
+      min-height: 650px;
+      opacity: 0;
+      text-align: center;
+      transition-delay: 0s;
+      transition-duration: 2s;
+      transition-property: opacity;
+      svg {
+        margin: auto auto;
+        overflow: visible;
+        position: relative;
+        width: 100%;
+        z-index: 1;
+        .path {
+          opacity: 1;
+          stroke-width: 1px;
+          stroke: #faeada;
+          stroke-opacity: 1;
+        }
+      }
+    }
+    .map_info {
+      align-items: center;
+      color: #000;
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      margin: auto auto;
+      transition-delay: 0s;
+      transition-duration: 0.3s;
+      transition-property: opacity;
+      visibility: hidden;
+      width: 100%;
+      z-index: 1;
+      .map_info_content {
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+        box-sizing: border-box;
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 400px;
+        padding: 40px;
+        .current_municipality_status {
+          margin-bottom: 20px;
+          h4 {
+            color: #f00;
+            font-size: 20px;
+            line-height: 24px;
+          }
+        }
+        .close_container {
+          button.close {
+            background-color: #f00;
+            border: 2px solid #f00;
+            color: #fff;
+            cursor: pointer;
+            font-family: Moret, sans-serif;
+            font-size: 12px;
+            letter-spacing: 0;
+            padding: 4px 13px;
+            text-transform: uppercase;
+            &:hover {
+              background-color: #ff0;
+              color: #f00;
+            }
+          }
+        }
+      }
+    }
+    .map_tooltip {
+      background-color: rgba(255, 255, 255, 1);
+      border: 1px solid #ccc;
+      color: #000;
+      opacity: 0;
+      padding: 4px 7px;
+      position: absolute;
+      z-index: 3;
+      strong {
+        font-size: 20px;
+      }
+    }
+    .marker {
+      fill: #31558d;
+      //stroke: #31558d;
+      fill-opacity: .75;
+      transition: all .2s ease-in-out;
+      &:hover {
+        fill: #8d3155;
+        fill-opacity: 1;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@import 'basics.less';
