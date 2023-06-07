@@ -64,7 +64,7 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: 'assets/img/', to: '../public/assets/img/', noErrorOnMissing: true, globOptions: { dot: true, gitignore: true, ignore: ['**/.DS_Store'] }},
-        { from: 'assets/data/2023-06-kirjakartta - data.csv', to: '../public/assets/data/2023-06-kirjakartta_data.csv', noErrorOnMissing: true, globOptions: { dot: true, gitignore: true, ignore: ['**/.DS_Store'] }},
+        { from: 'assets/data/Kirjat kartalla - data.csv', to: '../public/assets/data/2023-06-kirjakartta_data.csv', noErrorOnMissing: true, globOptions: { dot: true, gitignore: true, ignore: ['**/.DS_Store'] }},
         { from: 'assets/data/2023-06-kirjakartta - map.tjson', to: '../public/assets/data/2023-06-kirjakartta_map.tjson', noErrorOnMissing: true, globOptions: { dot: true, gitignore: true, ignore: ['**/.DS_Store'] }},
         { from: 'src/font/', to: '../public/font/', noErrorOnMissing: true, globOptions: { dot: true, gitignore: true, ignore: ['**/.DS_Store'] }},
         { from: './favicon.png', to: '../public', noErrorOnMissing: true, globOptions: { dot: true, gitignore: true, ignore: ['**/.DS_Store'] }}

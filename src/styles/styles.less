@@ -9,7 +9,6 @@
   font-family: Open Sans, sans-serif;
   margin: auto auto;
   max-width: 688px;
-  padding-top: 20px;
   position: relative;
   text-align: center;
   .map_wrapper {
@@ -33,6 +32,18 @@
           stroke-width: 1px;
           stroke: #faeada;
           stroke-opacity: 1;
+        }
+        .text {
+          fill: #666;
+          font-size: 12px;
+          font-weight: 600;
+          paint-order: stroke;
+          pointer-events: none;
+          stroke-linecap: butt;
+          stroke-linejoin: miter;
+          stroke-width: 2px;
+          stroke: #fff;
+          text-anchor: middle;
         }
       }
     }

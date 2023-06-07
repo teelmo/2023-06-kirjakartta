@@ -86,6 +86,20 @@ function Map({ data }) {
       .ease(d3.easeElastic)
       .duration(400)
       .attr('transform', (d) => `translate(${projection([d.coordinates_x, d.coordinates_y])[0]},${projection([d.coordinates_x, d.coordinates_y])[1]}) scale(1)`);
+
+    svg.selectAll('.text')
+      .data(data)
+      .enter().append('svg:text')
+      .attr('class', 'text')
+      .text((d) => (d.place))
+      .attr('transform', (d) => `translate(${projection([d.coordinates_x, d.coordinates_y])[0]},${projection([d.coordinates_x, d.coordinates_y])[1]}) scale(0)`)
+      .attr('y', '15px')
+      .transition()
+      .delay(400)
+      .ease(d3.easeElastic)
+      .duration(400)
+      .attr('transform', (d) => `translate(${projection([d.coordinates_x, d.coordinates_y])[0]},${projection([d.coordinates_x, d.coordinates_y])[1]}) scale(1)`);
+
     // .on('mouseover', function(d){})
   }, [showData, data]);
 
@@ -99,7 +113,7 @@ function Map({ data }) {
 
     const map = topojson.feature(map_data, map_data.objects.features);
     // https://observablehq.com/@d3/robinson
-    const projection = d3.geoTransverseMercator().rotate([-26.5, 0]).fitExtent([[50, 0], [appRef.current.offsetWidth - 50, 700]], map);
+    const projection = d3.geoTransverseMercator().rotate([-26.5, 0]).fitExtent([[0, 0], [appRef.current.offsetWidth, 700]], map);
     const path = d3.geoPath().projection(projection);
 
     svg.append('g')
