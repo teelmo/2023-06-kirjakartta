@@ -11,7 +11,6 @@
   font-family: Open Sans, sans-serif;
   margin: auto auto;
   max-width: 688px;
-  padding-top: 20px;
   position: relative;
   text-align: center;
 }
@@ -39,6 +38,18 @@
   stroke-width: 1px;
   stroke: #faeada;
   stroke-opacity: 1;
+}
+#app-root-2023-06-kirjakartta .app .map_wrapper .map_container svg .text {
+  fill: #666;
+  font-size: 12px;
+  font-weight: 600;
+  paint-order: stroke;
+  pointer-events: none;
+  stroke-linecap: butt;
+  stroke-linejoin: miter;
+  stroke-width: 2px;
+  stroke: #fff;
+  text-anchor: middle;
 }
 #app-root-2023-06-kirjakartta .app .map_wrapper .map_info {
   align-items: center;
