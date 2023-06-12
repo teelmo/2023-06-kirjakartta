@@ -5,18 +5,31 @@
 @import 'yddrasil_overrides.less';
 
 #app-root-2023-06-kirjakartta .app {
+  background-color: #c7c8dd;
   box-sizing: border-box;
   font-family: Open Sans, sans-serif;
   margin: auto auto;
-  max-width: 688px;
+  padding: 20px 0 40px 0;
   position: relative;
   text-align: center;
   .map_wrapper {
+    max-width: 600px;
+    margin: auto auto;
     padding-bottom: 40px;
     position: relative;
+    .input_container {
+      input {
+        font-family: Open Sans, sans-serif;
+        font-size: 16px;
+        padding: 5px 7px;
+        width: 400px;
+        outline: none;
+      }
+    }
     .map_container {
       min-height: 650px;
       opacity: 0;
+      padding-top: 40px;
       text-align: center;
       transition-delay: 0s;
       transition-duration: 2s;
@@ -29,8 +42,9 @@
         z-index: 1;
         .path {
           opacity: 1;
+          fill: #f2e8d6;
           stroke-width: 1px;
-          stroke: #faeada;
+          stroke: #f2e8d6;
           stroke-opacity: 1;
         }
         .text {
@@ -49,7 +63,6 @@
     }
     .map_info {
       align-items: center;
-      back
       color: #000;
       display: flex;
       height: 100%;

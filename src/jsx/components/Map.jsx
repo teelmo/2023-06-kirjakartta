@@ -151,28 +151,25 @@ function Map({ data }) {
   }, [drawMap, mapData]);
 
   return (
-    <>
-      <h2>Löydä kirja</h2>
-      <h4>Valitse paikka</h4>
-      <div className="map_wrapper map_municipality" ref={appRef}>
-        <div className="input_container">
-          <label htmlFor="app_search_place">
-            <input list="app_places" id="app_search_place" name="" placeholder="Valitse paikka" onChange={(event) => showData(event, false)} />
-          </label>
-          <datalist id="app_places">
-            {data && data.map(place => (
+    <div className="map_wrapper map_municipality" ref={appRef}>
+      <div className="input_container">
+        <label htmlFor="app_search_place">
+          <input list="app_places" id="app_search_place" name="" placeholder="Valitse paikka" onChange={(event) => showData(event, false)} />
+        </label>
+        <datalist id="app_places">
+          {data && data.map(place => (
             // eslint-disable-next-line jsx-a11y/control-has-associated-label
-              <option key={place.place} data-value={place.place} value={place.place}>{place.place}</option>
-            ))}
-          </datalist>
-        </div>
-        <IsVisible once>
-          {(isVisible) => (
-            <div className="map_container map" ref={mapRef} style={isVisible ? { opacity: 1 } : {}} />
-          )}
-        </IsVisible>
-        <div className="map_info">
-          {currentAreaData.place
+            <option key={place.place} data-value={place.place} value={place.place}>{place.place}</option>
+          ))}
+        </datalist>
+      </div>
+      <IsVisible once>
+        {(isVisible) => (
+          <div className="map_container map" ref={mapRef} style={isVisible ? { opacity: 1 } : {}} />
+        )}
+      </IsVisible>
+      <div className="map_info">
+        {currentAreaData.place
           && (
             <div className="map_info_content">
               <h3>{currentAreaData.place}</h3>
@@ -183,10 +180,9 @@ function Map({ data }) {
               <div className="close_container"><button className="close" type="button" onClick={() => hideData()}>Sulje</button></div>
             </div>
           )}
-        </div>
-        <div className="map_tooltip" />
       </div>
-    </>
+      <div className="map_tooltip" />
+    </div>
   );
 }
 

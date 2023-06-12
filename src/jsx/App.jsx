@@ -41,7 +41,6 @@ function App() {
     <div className="app">
       <div className="content_wrapper">
         <div className="content_container">
-          <h2>Kirjakartta</h2>
           {data && <Map data={data} />}
         </div>
       </div>
