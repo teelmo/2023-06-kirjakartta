@@ -49,6 +49,7 @@
     }
     .map_info {
       align-items: center;
+      back
       color: #000;
       display: flex;
       height: 100%;
@@ -65,37 +66,41 @@
       z-index: 1;
       .map_info_content {
         align-items: center;
-        background-color: rgba(255, 255, 255, 0.95);
-        border-radius: 20px;
-        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+        background-color: transparent;
+        background-image: url('../assets/img/kirja_pohja.png');
+        background-size: 100% 100%;
         box-sizing: border-box;
         display: inline-flex;
         flex-direction: column;
         justify-content: center;
         max-width: 400px;
-        padding: 40px;
+        padding: 40px 60px 40px 40px;
+        h3 {
+          display: none;
+        }
         .current_municipality_status {
+          color: #f2e8d6;
           margin-bottom: 20px;
-          h4 {
-            color: #f00;
-            font-size: 20px;
-            line-height: 24px;
+          img {
+            width: 100%;
+          }
+          p {
+            line-height: 20px;
           }
         }
         .close_container {
           button.close {
-            background-color: #f00;
-            border: 2px solid #f00;
+            background-color: #bea98b;
+            border: 2px solid #bea98b;
             color: #fff;
             cursor: pointer;
-            font-family: Moret, sans-serif;
             font-size: 12px;
-            letter-spacing: 0;
-            padding: 4px 13px;
+            letter-spacing: 0.05em;
+            padding: 5px 13px;
             text-transform: uppercase;
             &:hover {
-              background-color: #ff0;
-              color: #f00;
+              background-color: #2B296B;
+              color: #fff;
             }
           }
         }
@@ -114,15 +119,23 @@
       }
     }
     .marker {
-      fill: #31558d;
+      fill: #2B296B;
       //stroke: #31558d;
-      fill-opacity: .75;
+      fill-opacity: 1;
       transition: all .2s ease-in-out;
       &:hover {
-        fill: #8d3155;
+        fill: #bea98b;
         fill-opacity: 1;
         cursor: pointer;
       }
+    }
+    .circle {
+      fill: #0095BD;
+      //stroke: #31558d;
+      fill-opacity: 1;
+      pointer-events: none;
+      stroke-width: 0;
+      transition: all .2s ease-in-out;
     }
   }
 }

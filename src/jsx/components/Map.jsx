@@ -68,7 +68,7 @@ function Map({ data }) {
       .data(data)
       .enter().append('svg:path')
       .attr('class', 'marker')
-      .attr('d', 'M0,0l-8.8-17.7C-12.1-24.3-7.4-32,0-32h0c7.4,0,12.1,7.7,8.8,14.3L0,0z')
+      .attr('d', 'M387.88,221.09c0,83.97-129.46,322.22-167.91,391.14c-4.66,8.35-16.63,8.35-21.29,0   C160.21,543.31,30.75,305.06,30.75,221.09c0-98.62,79.94-178.56,178.56-178.56S387.88,122.47,387.88,221.09z')
       .on('mouseover', (event, d) => {
         showTooltip(event, d);
       })
@@ -80,12 +80,23 @@ function Map({ data }) {
         hideTooltip();
         showData(event, d);
       })
-      .attr('transform', (d) => `translate(${projection([d.coordinates_x, d.coordinates_y])[0]},${projection([d.coordinates_x, d.coordinates_y])[1]}) scale(0)`)
+      .attr('transform', (d) => `translate(${projection([d.coordinates_x, d.coordinates_y])[0] - 15.5},${projection([d.coordinates_x, d.coordinates_y])[1] - 42.5}) scale(0)`)
       .transition()
       .delay(400)
       .ease(d3.easeElastic)
       .duration(400)
-      .attr('transform', (d) => `translate(${projection([d.coordinates_x, d.coordinates_y])[0]},${projection([d.coordinates_x, d.coordinates_y])[1]}) scale(1)`);
+      .attr('transform', (d) => `translate(${projection([d.coordinates_x, d.coordinates_y])[0] - 15.5},${projection([d.coordinates_x, d.coordinates_y])[1] - 42.5}) scale(0.075)`);
+    svg.selectAll('.circle')
+      .data(data)
+      .enter().append('svg:circle')
+      .attr('class', 'circle')
+      .attr('transform', (d) => `translate(${projection([d.coordinates_x, d.coordinates_y])[0]},${projection([d.coordinates_x, d.coordinates_y])[1] - 25}) scale(0)`)
+      .attr('r', 7.5)
+      .transition()
+      .delay(400)
+      .ease(d3.easeElastic)
+      .duration(400)
+      .attr('transform', (d) => `translate(${projection([d.coordinates_x, d.coordinates_y])[0]},${projection([d.coordinates_x, d.coordinates_y])[1] - 25}) scale(1)`);
 
     svg.selectAll('.text')
       .data(data)
@@ -161,13 +172,17 @@ function Map({ data }) {
           )}
         </IsVisible>
         <div className="map_info">
-          <div className="map_info_content">
-            <h3>{currentAreaData.place}</h3>
-            <div className="current_municipality_status">
-              <p>{currentAreaData.text}</p>
+          {currentAreaData.place
+          && (
+            <div className="map_info_content">
+              <h3>{currentAreaData.place}</h3>
+              <div className="current_municipality_status">
+                <img src={`./assets/img/${currentAreaData.place?.toLowerCase()}_viivapiirros.png`} alt="" />
+                <p>{currentAreaData.text}</p>
+              </div>
+              <div className="close_container"><button className="close" type="button" onClick={() => hideData()}>Sulje</button></div>
             </div>
-            <div className="close_container"><button className="close" type="button" onClick={() => hideData()}>Sulje</button></div>
-          </div>
+          )}
         </div>
         <div className="map_tooltip" />
       </div>
