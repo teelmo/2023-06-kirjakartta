@@ -2,6 +2,8 @@ import React, {
   useEffect, useCallback, useState, useRef, memo
 } from 'react';
 import PropTypes from 'prop-types';
+// https://github.com/remarkjs/react-markdown
+import ReactMarkdown from 'react-markdown';
 
 // https://www.npmjs.com/package/react-is-visible
 import 'intersection-observer';
@@ -98,10 +100,12 @@ function Map({ data }) {
       .duration(400)
       .attr('transform', (d) => `translate(${projection([d.coordinates_x, d.coordinates_y])[0]},${projection([d.coordinates_x, d.coordinates_y])[1] - 25}) scale(1)`);
 
+    const enabledCities = ['Helsinki', 'Tampere', 'Turku', 'Pori', 'Joensuu', 'Vaasa', 'Oulu', 'Rovaniemi', 'Kotka', 'Kuopio', 'Vaasa', 'Kuusamo', 'Mikkeli', 'Utsjoki', 'Kajaani', 'Jyväskylä', 'Ahvenanmaa', 'Hanko'];
     svg.selectAll('.text')
       .data(data)
       .enter().append('svg:text')
       .attr('class', 'text')
+      .style('display', (d) => (enabledCities.includes(d.place) ? 'block' : 'none'))
       .text((d) => (d.place))
       .attr('transform', (d) => `translate(${projection([d.coordinates_x, d.coordinates_y])[0]},${projection([d.coordinates_x, d.coordinates_y])[1]}) scale(0)`)
       .attr('y', '15px')
@@ -174,8 +178,8 @@ function Map({ data }) {
             <div className="map_info_content">
               <h3>{currentAreaData.place}</h3>
               <div className="current_municipality_status">
-                <img src={`./assets/img/${currentAreaData.place?.toLowerCase()}_viivapiirros.png`} alt="" />
-                <p>{currentAreaData.text}</p>
+                <img src={`https://lusi-dataviz.ylestatic.fi/2023-06-kirjakartta/assets/img/${currentAreaData.place?.toLowerCase()}_viivapiirros.png`} alt="" />
+                <ReactMarkdown>{currentAreaData.text}</ReactMarkdown>
               </div>
               <div className="close_container"><button className="close" type="button" onClick={() => hideData()}>Sulje</button></div>
             </div>

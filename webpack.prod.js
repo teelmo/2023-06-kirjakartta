@@ -39,7 +39,7 @@ module.exports = merge(common, {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
     new MiniCssExtractPlugin({
-      filename: 'css/' + name + '.[contenthash].min.css'
+      filename: 'css/' + name + '.min.css'
     })
   ]
 });

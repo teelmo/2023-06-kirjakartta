@@ -105,6 +105,13 @@
 #app-root-2023-06-kirjakartta .app .map_wrapper .map_info .map_info_content .current_municipality_status p {
   line-height: 20px;
 }
+#app-root-2023-06-kirjakartta .app .map_wrapper .map_info .map_info_content .current_municipality_status a {
+  text-decoration: underline;
+  color: #f2e8d6;
+}
+#app-root-2023-06-kirjakartta .app .map_wrapper .map_info .map_info_content .current_municipality_status a:hover {
+  text-decoration: none;
+}
 #app-root-2023-06-kirjakartta .app .map_wrapper .map_info .map_info_content .close_container button.close {
   background-color: #bea98b;
   border: 2px solid #bea98b;
