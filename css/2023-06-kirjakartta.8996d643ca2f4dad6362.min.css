@@ -15,6 +15,11 @@
   position: relative;
   text-align: center;
 }
+#app-root-2023-06-kirjakartta .app h4 {
+  color: #000;
+  margin: 40px auto 20px auto;
+  max-width: 600px;
+}
 #app-root-2023-06-kirjakartta .app .map_wrapper {
   max-width: 600px;
   margin: auto auto;

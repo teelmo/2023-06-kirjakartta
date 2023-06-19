@@ -1,0 +1,12 @@
+{
+  "mainfile": "dataviz.html",
+  "js": [
+    "js/2023-06-kirjakartta.9285a74e6fbf012c2bbc.min.js"
+  ],
+  "css": [
+    "css/2023-06-kirjakartta.8996d643ca2f4dad6362.min.css",
+    "font/fonts.css"
+  ],
+  "darkMode": true,
+  "externalContent": true
+}
