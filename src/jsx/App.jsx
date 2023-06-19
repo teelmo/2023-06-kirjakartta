@@ -43,6 +43,7 @@ function App() {
         <div className="content_container">
           {data && <Map data={data} />}
         </div>
+        <h4>Auta meitä kehittämään kirjakarttaa ja vinkkaa lisää kirjoja Suomesta. Kirjoita vinkit jutun lopussa olevaan kommenttikenttään.</h4>
       </div>
       <noscript>Your browser does not support JavaScript!</noscript>
     </div>
