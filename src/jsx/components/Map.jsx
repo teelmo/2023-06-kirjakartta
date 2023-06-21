@@ -40,13 +40,19 @@ function Map({ data }) {
   }, []);
 
   const showData = useCallback((event, d) => {
-    appRef.current.querySelector('.map_info').style.visibility = 'visible';
-    appRef.current.querySelector('.map_info').style.opacity = 1;
+    const firstUpper = (str) => str.charAt(0).toUpperCase() + str.slice(1);
     if (d === false) {
-      const place_name = document.querySelector(`#app_places option[value='${event.target.value}']`)?.dataset.value;
-      setCurrentAreaData(data.filter(place => place.place === place_name)[0]);
+      const place_name = document.querySelector(`#app_places option[value='${firstUpper(event.target.value.toLowerCase())}']`)?.dataset.value;
+      if (place_name !== undefined) {
+        setCurrentAreaData(data.filter(place => place.place.toLowerCase() === place_name.toLowerCase())[0]);
+        console.log(data.filter(place => place.place.toLowerCase() === place_name.toLowerCase())[0]);
+        appRef.current.querySelector('.map_info').style.visibility = 'visible';
+        appRef.current.querySelector('.map_info').style.opacity = 1;
+      }
     } else {
       setCurrentAreaData(d);
+      appRef.current.querySelector('.map_info').style.visibility = 'visible';
+      appRef.current.querySelector('.map_info').style.opacity = 1;
     }
   }, [data]);
 
